@@ -1,5 +1,6 @@
 use clap::Parser;
 extern crate colored; // not needed in Rust 2018
+use ansi_hex_color;
 use colored::*;
 /// Simple program to greet a person
 #[derive(Parser, Debug)]
@@ -56,7 +57,7 @@ fn main() {
         println!("{} {}", "Negative:".blue(), lint16);
     }
 
-    if (buint64 > 0xFFFF) & (buint64 <= 0xFFFFFFFF) {
+    if (buint64 > 0xffff) & (buint64 <= 0xffffffff) {
         let buint32 = u32::from_str_radix(rawhex, 16).unwrap();
         let luint32 = u32::from_be(buint32);
 
@@ -91,5 +92,18 @@ fn main() {
         println!("{} {}", "Double:".blue(), ldoub);
     }
 
-    // let _r1 = std::io::stdin().read_line(&mut line).unwrap();
+    println!("Binary: {:b}, octal: {:o}", buint64, buint64);
+
+    println!("");
+    println!("{}", "-----------Or it could be-----------".green());
+
+    println!("Binary: {:b}", buint64);
+    println!("Octal: {:o}", buint64);
+    if (buint64 > 0xffff) & (buint64 <= 0xffffffff) {
+        let foreground = format!("{}{}", "#", rawhex);
+        let background = "ss";
+        let txt = "ANSI 256-color";
+        let colored_txt = ansi_hex_color::colored(&foreground, background, txt);
+        println!("{}", colored_txt);
+    }
 }
