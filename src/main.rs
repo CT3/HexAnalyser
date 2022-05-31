@@ -80,7 +80,7 @@ fn main() {
         println!("{} {}", "Signed:".blue(), lint64);
     }
 
-    if (buint64 <= 0xFFFFFFFF) && (buint64 > 0xFF) {
+    if (buint64 <= 0xFFFFFFFF) & (buint64 > 0xFF) {
         let buint32 = u32::from_str_radix(rawhex, 16).unwrap();
         let luint32 = u32::from_be(buint32);
         let lfloat = f32::from_bits(luint32);
