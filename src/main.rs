@@ -25,10 +25,10 @@ fn main() {
     println!("{} {}", "Hex:".blue(), rawhex);
 
     let buint64 = u64::from_str_radix(rawhex, 16).unwrap();
-    println!("{} {}", "Positive:".blue(), buint64);
+    println!("{} {}", "Unsigned:".blue(), buint64);
 
     let bint = unsafe { std::mem::transmute::<u64, i64>(buint64) };
-    println!("{} {}", "Negative:".blue(), bint);
+    println!("{} {}", "Signed:".blue(), bint);
 
     if buint64 <= 0xFFFFFFFF {
         let buint32 = u32::from_str_radix(rawhex, 16).unwrap();
@@ -51,10 +51,10 @@ fn main() {
 
         println!("{} {:x}", "Hex:".blue(), luint16);
 
-        println!("{} {}", "Positive:".blue(), luint16);
+        println!("{} {}", "Unsigned:".blue(), luint16);
 
         let lint16 = unsafe { std::mem::transmute::<u16, i16>(luint16) };
-        println!("{} {}", "Negative:".blue(), lint16);
+        println!("{} {}", "Signed:".blue(), lint16);
     }
 
     if (buint64 > 0xffff) & (buint64 <= 0xffffffff) {
@@ -63,10 +63,10 @@ fn main() {
 
         println!("{} {:x}", "Hex:".blue(), luint32);
 
-        println!("{} {}", "Positive:".blue(), luint32);
+        println!("{} {}", "Unsigned:".blue(), luint32);
 
         let lint32 = unsafe { std::mem::transmute::<u32, i32>(luint32) };
-        println!("{} {}", "Negative:".blue(), lint32);
+        println!("{} {}", "Signed:".blue(), lint32);
     }
 
     if buint64 > 0xFFFFFFFF {
@@ -74,10 +74,10 @@ fn main() {
 
         println!("{} {:x}", "Hex:".blue(), luint64);
 
-        println!("{} {}", "Positive:".blue(), luint64);
+        println!("{} {}", "Unsigned:".blue(), luint64);
 
         let lint64 = unsafe { std::mem::transmute::<u64, i64>(luint64) };
-        println!("{} {}", "Negative:".blue(), lint64);
+        println!("{} {}", "Signed:".blue(), lint64);
     }
 
     if (buint64 <= 0xFFFFFFFF) && (buint64 > 0xFF) {
