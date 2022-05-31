@@ -92,18 +92,22 @@ fn main() {
         println!("{} {}", "Double:".blue(), ldoub);
     }
 
-    println!("Binary: {:b}, octal: {:o}", buint64, buint64);
-
     println!("");
     println!("{}", "-----------Or it could be-----------".green());
 
-    println!("Binary: {:b}", buint64);
-    println!("Octal: {:o}", buint64);
-    if (buint64 > 0xffff) & (buint64 <= 0xffffffff) {
+    println!("{}{:b}", "Binary: ".blue(), buint64);
+    println!("{}{:o}", "Octal: ".blue(), buint64);
+    if buint64 <= 0xFFFFFF {
         let foreground = format!("{}{}", "#", rawhex);
         let background = "ss";
         let txt = "ANSI 256-color";
         let colored_txt = ansi_hex_color::colored(&foreground, background, txt);
         println!("{}", colored_txt);
+    }
+
+    if (buint64 > 0x231A) & (buint64 <= 0x1F9E6) {
+        let buint32 = u32::from_str_radix(rawhex, 16).unwrap();
+        let decoded_em = char::from_u32(buint32).expect("Not a valid emoji");
+        println!("{} {}", "Emoji:".blue(), decoded_em);
     }
 }
