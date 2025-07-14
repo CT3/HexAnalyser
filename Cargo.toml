@@ -1,6 +1,6 @@
 [package]
 name = "hex_analyser"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "Analyzes a hex value and shows its possible meanings"
 authors = ["Mantas Jurkuvenas"]
