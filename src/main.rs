@@ -119,6 +119,35 @@ fn print_other_representations(rawhex: &str, buint64: u64) {
             }
         }
     }
+    print_ascii_representation(rawhex);
+}
+
+fn print_ascii_representation(rawhex: &str) {
+    let mut ascii_string = String::new();
+    let mut bytes = Vec::new();
+
+    // Parse hex string into bytes
+    for i in (0..rawhex.len()).step_by(2) {
+        if i + 2 <= rawhex.len() {
+            if let Ok(byte) = u8::from_str_radix(&rawhex[i..i + 2], 16) {
+                bytes.push(byte);
+            } else {
+                // Handle cases where hex parsing fails for a pair (e.g., "G0")
+                // For now, we'll just skip it or add a placeholder.
+                // For this context, we'll just stop processing this pair.
+                break;
+            }
+        }
+    }
+
+    for byte in bytes {
+        if byte.is_ascii_graphic() || byte.is_ascii_whitespace() {
+            ascii_string.push(byte as char);
+        } else {
+            ascii_string.push('.');
+        }
+    }
+    println!("{}{} {}", "ASCII: ".blue(), ascii_string.green(), "(non-printable characters are replaced with a dot)".red());
 }
 
 trait IsEmoji {
