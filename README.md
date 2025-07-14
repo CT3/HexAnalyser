@@ -13,7 +13,7 @@ cargo install hex_analyser
 
 To run the project, execute the installed binary with a hex value:
 ```
-hex_analyser --hexval 0xc1bc7ae1
+hex_analyser -v 0xc1bc7ae1
 ```
 
 **Example Output:**
