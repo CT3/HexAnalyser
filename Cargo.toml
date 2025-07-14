@@ -2,6 +2,13 @@
 name = "hex_analyser"
 version = "1.0.0"
 edition = "2021"
+description = "Analyzes a hex value and shows its possible meanings"
+authors = ["Mantas Jurkuvenas"]
+license = "MIT"
+repository = "https://github.com/CT3/HexAnalyser"
+readme = "README.md"
+keywords = ["hex", "binary", "analysis", "cli"]
+categories = ["command-line-utilities", "development-tools"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
